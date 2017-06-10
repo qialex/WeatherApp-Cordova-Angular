@@ -1,0 +1,63 @@
+<div class="main">
+	<h1>Weather App</h1>
+	
+	
+	<div class="cityForm">
+		<div class="cityInput">
+			<div>
+				City:
+				<input class="cityTextInput" ng-focus="fouced = true" ng-blur="fouced = false" ng-keypress="keydown($event)" ng-model="newCity" />
+				<button ng-disabled="newCity.length < 3 || newCity.length > 10 || weather.updateInProgress" ng-click="changeCity()">Select</button>
+			</div>
+			<div ng-if="fouced" class="cityHint">
+				<div class="cityHintRow" ng-class="newCity.length >= 3 ? 'active' : ''">3 chars minimum</div>
+				<div class="cityHintRow" ng-class="newCity.length <= 10 ? 'active' : ''">10 chars maximum</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="cityBlock">
+		<div ng-if="weather.city && !weather.cityUpdateInProgress">
+			<div class="cityName">
+				{{weather.dump.name || weather.city}} <button ng-disabled="weather.updateInProgress" ng-click="clearCity()">Clear</button>
+			</div>
+			<div ng-if="weather.dump.coord.lat">
+				latitude: {{weather.dump.coord.lat}},
+				longitude: {{weather.dump.coord.lon}}
+			</div>
+		</div>
+		<div ng-if="!weather.city && !weather.cityUpdateInProgress">
+			<div>{{weather.dump.name || 'Your location'}}</div>
+			<div ng-if="geolocation.coords.latitude">
+				latitude: {{Math.round(geolocation.coords.latitude * 100) / 100}},
+				longitude: {{Math.round(geolocation.coords.longitude * 100) / 100 }}
+			</div>
+			<div ng-if="!geolocation.coords.latitude">
+				Is not defined. Check the GPS and internet. Or select a city.
+			</div>
+		</div>
+		<div ng-if="weather.cityUpdateInProgress">
+			Updating...
+		</div>
+	</div>
+	
+	<div class="weatherBlock">
+		<div ng-if="weather.dump.sys && !weather.cityUpdateInProgress">
+			<div>
+				Temperature: {{weather.dump.main.temp}}&#8451;
+			</div>
+			<div>
+				Pressure: {{weather.dump.main.pressure}}mm
+			</div>
+			<div>
+				Humidity: {{weather.dump.main.humidity}}%
+			</div>
+		</div>
+		<div ng-if="!weather.dump.sys && !weather.cityUpdateInProgress">
+			Somewhy, we can't get a weather for this location.
+		</div>
+		<div ng-if="weather.cityUpdateInProgress">
+			Updating...
+		</div>
+	</div>
+</div>

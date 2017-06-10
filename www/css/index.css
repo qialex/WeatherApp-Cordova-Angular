@@ -1,0 +1,131 @@
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+body {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    background-color:#E4E4E4;
+
+    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-size:18px;
+    height:100%;
+    margin:0px;
+    padding:0px;
+    // text-transform:uppercase;
+    width:100%;
+}
+
+h1 {
+    font-size:24px;
+    font-weight:normal;
+    margin:0px;
+    overflow:visible;
+    padding:0px;
+    text-align:center;
+}
+
+/* HEADER */
+.header {
+	text-align:center;
+	margin:20px;
+}
+.header a {
+	text-align:center;
+	margin:0 10px;
+	padding: 5px 10px;
+	background-color: #ccc;
+	text-decoration: none;
+	color: black;
+}
+.header a: hover, .header a:visited {
+	color: black;
+}
+
+
+/* MAIN page */
+.cityForm {
+	text-align: center;
+    background-color: cornsilk;
+    margin: 20px;
+    padding: 10px;
+}
+.cityInput {
+	display: inline-block;
+}
+.cityHint{
+	margin-top:5px;
+	text-align:left;
+}
+.cityHintRow {
+    margin-left: 42px;
+}
+.cityHintRow:before {
+	content: '\2714';
+	margin-right: 5px;
+	visibility: hidden;
+	color: forestgreen;
+}
+.cityHintRow.active:before {
+	visibility: visible;
+}
+
+.cityBlock {
+    margin: 20px;
+    padding: 10px;
+    background-color: darkseagreen;
+}
+.cityName{ 
+	text-transform: capitalize;
+}
+.weatherBlock {
+    margin: 20px;
+    padding: 10px;
+    background-color: darkseagreen;
+}
+
+/* ABOUT page */
+.about {
+	text-align:left;
+	margin:20px 20px 20px 0;
+}
+
+
+/* FOOTER */
+.footer {
+	position:fixed;
+	bottom:0px;
+	left: 0px;
+	right: 0px;
+	padding: 10px;
+	font-size: 14px;
+	background-color:#E4E4E4;
+}
+.footer div {
+	display:inline-block;
+}
+.lastUpdate{
+	
+	float:left;
+}
+.lastUpdate{
+	float:left;
+	text-align:left;
+}
+.footerNetwork {
+	float:right;
+	text-align:right;
+}
+.footerNetwork.online .indicatoror{
+	background-color: green;
+}
+.footerNetwork.offline .indicatoror{
+	background-color: red;
+}
+.footerNetwork .indicatoror  {
+	width: 10px;
+	height: 10px;
+	border-radius: 20px;
+	margin-top: 1px;
+}
