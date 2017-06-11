@@ -1,42 +1,31 @@
-WeatherApp.service('Rest', ["$http", "$q", function($http, $q) {
+WeatherApp.service('Rest', ["$http", "$q", "CONST", function($http, $q, CONST) {
+    this.inProgress = false;
     
-	var server = 'http://api.openweathermap.org/data/2.5/weather';
-	var APP_ID = 'da889d55faf13a8822d05d1e87c39460';
-	
-    this.act = function (data) {
+	this.act = function (data) {
 		var self = this;
 		var deferred = $q.defer();
 		
-		function onSuccess (position) {
-			self.coords = position.coords;
-			deferred.resolve();
-		}
-		
-		function onError () {
-			deferred.reject();
-		}
+		this.inProgress	= true;
 		
 		params = data.city ? {q: data.city} : {lat: data.latitude, lon: data.longitude};
-		params.appid = APP_ID;
-		params.units= 'metric';
 		
 		$http({
 			method: 'GET',
-			url: server,
+			url: CONST.REST_SERVER_URL,
 			params: params,
 			headers: {'Content-Type': 'application/json'}
 			
 		}).then(function successCallback(response) {
 		
+			self.inProgress	= false;
 			deferred.resolve(response.data);
 			
-		}, function errorCallback () {
+		}, function errorCallback (response) {
 
-
-			deferred.reject({type:'network_error'});
+			self.inProgress	= false;
+			deferred.reject(response);
 		});
 		
 		return deferred.promise;
 	}
-	
 }]);

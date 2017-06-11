@@ -1,4 +1,4 @@
-var WeatherApp = angular.module('WeatherApp', ['ngRoute', 'ngCordova']);
+var WeatherApp = angular.module('WeatherApp', ['ngRoute', 'LocalStorageModule', 'ngCordova']);
     // .config(['$compileProvider', function ($compileProvider) {
     //     $compileProvider.urlSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
     // }])
@@ -12,3 +12,8 @@ WeatherApp.config(['$routeProvider', function ($routeProvider) {
 	})
 	.otherwise({redirectTo: '/'});
 }]);
+
+WeatherApp.config(function (localStorageServiceProvider) {
+  localStorageServiceProvider
+    .setPrefix('WeatherApp');
+});

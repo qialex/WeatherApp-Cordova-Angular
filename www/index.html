@@ -33,7 +33,7 @@
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link rel="stylesheet" type="text/css" href="css/index.css">
-        <title>Hello World</title>
+        <title>WeatherApp by Alexander Ishchenko</title>
     </head>
     <body>
 		
@@ -45,12 +45,17 @@
 		<script type="text/javascript" src="cordova.js"></script>
 		<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
 		<script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
+		<script type="text/javascript" src="bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
 		<script type="text/javascript" src="bower_components/ngCordova/dist/ng-cordova.min.js"></script>
 
 		<!-- App -->
         <script type="text/javascript" src="js/index-cordova.js"></script>
         <script type="text/javascript" src="js/app.js"></script>
 		
+		<script type="text/javascript" src="js/constants/constants.js"></script>
+		<script type="text/javascript" src="js/filters/filters.js"></script>
+		
+		<script type="text/javascript" src="js/services/service-network.js"></script>
         <script type="text/javascript" src="js/services/service-geolocation.js"></script>
 		<script type="text/javascript" src="js/services/service-weather.js"></script>
 		<script type="text/javascript" src="js/services/service-rest.js"></script>

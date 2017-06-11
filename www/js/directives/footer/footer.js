@@ -2,26 +2,16 @@ WeatherApp.directive('footerDirective', function() {
     return {
         restrict: 'E',
         templateUrl: 'js/directives/footer/footer.html',
-        controller: ['$scope', '$timeout', '$rootScope', '$cordovaNetwork', 'Weather', function($scope, $timeout, $rootScope, $cordovaNetwork, Weather) {
-			$scope.timeSince;
-			$scope.timeIn = 0;
+        controller: ['$scope', '$timeout', 'Weather', 'Network', function($scope, $timeout, Weather, Network) {
 			$scope.weather = Weather;
-			$scope.networkStatus = $cordovaNetwork.isOnline() ? 'online' : 'offline';
+			$scope.network = Network;
 			
-			function calcTimeSince () {
-				$scope.timeSince = Weather.lastTime ? Math.round((Date.now() - Weather.lastTime)/1000) : 'never';
-				$scope.timeIn = $scope.timeSince == 'never' ? 0 : Math.max(Weather.updateEvery/1000 - $scope.timeSince,0);
-				$timeout(calcTimeSince, 1000);
-			}
-			calcTimeSince ();
-            
-			$rootScope.$on('$cordovaNetwork:online', function(event, networkState){
-				$scope.networkStatus = 'online';
-			});		
-			$rootScope.$on('$cordovaNetwork:offline', function(event, networkState){
-				$scope.networkStatus = 'offline';
-			})	
+			$scope.timeSince = 0;
 			
+			(function calcTimeSince () {
+				$scope.timeSince = $scope.weather.lastTime ? Date.now() - $scope.weather.lastTime : 0;
+				$timeout(calcTimeSince, 300);
+			})();			
         }]
     }
 });

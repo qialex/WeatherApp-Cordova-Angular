@@ -1,15 +1,15 @@
 <div class="footer">
 	<div class="lastUpdate">
 		<span ng-if="!weather.updateInProgress">
-			Last update: {{timeSince}}<span ng-if="timeSince != 'never'"> sec ago</span>, 
-			next in {{timeIn}} sec
+			Last update: {{timeSince | timeSinceFilter}}<span ng-if="timeSince"> sec ago</span>, 
+			next in {{timeSince | timeIn}} sec
 		</span>
 		<span ng-if="weather.updateInProgress">
 			Updating...
 		</span>
 	</div>
-	<div class="footerNetwork" ng-class="networkStatus">
+	<div class="footerNetwork" ng-class="network.status">
 		<div class="indicatoror"></div>
-		{{networkStatus}}
+		{{network.status}}
 	</div>
 </div>

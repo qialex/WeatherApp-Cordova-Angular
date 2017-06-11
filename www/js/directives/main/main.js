@@ -2,7 +2,7 @@ WeatherApp.directive('mainDirective', function() {
     return {
         restrict: 'E',
         templateUrl: 'js/directives/main/main.html',
-        controller: ['$scope', 'Geolocation', 'Rest', 'Weather', function ($scope, Geolocation, Rest, Weather) {
+        controller: ['$scope', 'Geolocation', 'Weather', function ($scope, Geolocation, Weather) {
 			$scope.weather = Weather;
 			$scope.geolocation = Geolocation;			
 			

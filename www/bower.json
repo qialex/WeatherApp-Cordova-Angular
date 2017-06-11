@@ -17,7 +17,9 @@
   "dependencies": {
     "angular": "1.2",
     "angular-route": "1.2",
-    "ngCordova": "0.1.27-alpha"
+	"angular-local-storage": "^0.6.0",
+    "ngCordova": "0.1.27-alpha",
+    
   },
   "resolutions": {
     "angular": "1.2"

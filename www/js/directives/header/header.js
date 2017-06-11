@@ -2,9 +2,8 @@ WeatherApp.directive('headerDirective', function() {
     return {
         restrict: 'E',
         templateUrl: 'js/directives/header/header.html',
-        controller: ['$scope', function($scope) {
+        controller: function() {
 
-		
-        }]
+        }
     }
 });
